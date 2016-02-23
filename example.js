@@ -136,3 +136,46 @@ function immediate(a,b){
 // util.debuglog(section) 这个方法是在存在NODE_DEBUG环境变量的基础上，创建一个有条件写到stderr里的函数。如果“节点”的名字出现在这个环境变量里,那么就返回一个功能类似于console.error()的函数.如果不是,那么返回一个空函数.
 // section {String} 被调试的程序节点部分
 // 返回值: {Function} 日志处理函数
+
+// util.format(format, [...]) 根据第一个参数，返回一个格式化字符串，类似`printf`的格式化输出。
+// util.log(string) 在控制台进行输出，并带有时间戳。
+// util.inspect(object, [options]) 返回一个对象的字符串表现形式, 在代码调试的时候非常有用.
+// util.isArray(object) 如果给定的对象是`数组`类型，就返回`true`，否则返回`false`
+// util.isRegExp(object) 如果给定的对象是`RegExp`类型，就返回`true`，否则返回`false`。
+// util.isDate(object) 如果给定的对象是`Date`类型，就返回`true`，否则返回`false`。
+// util.isError(object) 如果给定的对象是`Error`类型，就返回`true`，否则返回`false`。
+// util.inherits(constructor, superConstructor) 通过[构造函数](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/constructor)，继承原型对象上的方法。构造函数的`原型`将被设置为一个新的从`超类`创建的对象。
+
+// events.EventEmitter 通过 `require('events').EventEmitter` 获取 EventEmitter 类。 
+// 当 `EventEmitter` 实例遇到错误，通常的处理方法是产生一个 `'error'` 事件，node 对错误事件做特殊处理。
+// 如果程序没有监听错误事件，程序会按照默认行为在打印出 栈追踪信息 (stack trace) 后退出。
+// EventEmitter 会在添加 listener 时触发 `'newListener'` 事件，删除 listener 时触发 `'removeListener'` 事件
+// emitter.addListener(event, listener)
+// emitter.on(event, listener)
+// emitter.once(event, listener)
+// emitter.removeListener(event, listener)
+// emitter.removeAllListeners([event])
+
+// emitter.setMaxListeners(n) 在默认情况下，EventEmitter 会在多于 10 个 listener 监听某个事件的时候出现警告，此限制在寻找内存泄露时非常有用。
+// 显然，也不是所有的 Emitter 事件都要被限制在 10 个 listener 以下，在这种情况下可以使用这个函数来改变这个限制。设置0这样可以没有限制。
+// EventEmitter.defaultMaxListeners `emitter.setMaxListeners(n)` 优先于 `EventEmitter.defaultMaxListeners`。
+
+// emitter.listeners(event) 返回指定事件的 listener 数组
+
+// emitter.emit(event, [arg1], [arg2], [...]) 使用提供的参数按顺序执行指定事件的 listener 若事件有 listeners 则返回 `true` 否则返回 `false`。
+
+// EventEmitter.listenerCount(emitter, event) 返回指定事件的 listeners 个数
+// 'removeListener'
+
+// Domains 提供了一种方式，即以一个单一的组的形式来处理多个不同的IO操作。如果任何一个注册到domain的事件触发器或回调触发了一个‘error’事件，或者抛出一个错误，那么domain对象将会被通知到。
+
+// domain.create() 返回一个新的Domain对象。
+// domain.run(fn) 在域的上下文里运行提供的函数，隐式地绑定所有该上下文里创建的事件分发器，计时器和低层请求。
+// domain.members 一个数组，里面的元素是被显式添加到域里的计时器和事件分发器。
+// domain.add(emitter) emitter {EventEmitter | Timer} 被添加到域里的时间分发器或计时器 显式地将一个分发器添加到域。如果这个分发器调用的任意一个事件处理器抛出一个错误，或是这个分发器分发了一个error事，那么它会被导向到这个域的error事件，就像隐式绑定所做的一样。
+// domain.remove(emitter) 与domain.add(emitter)函数恰恰相反，这个函数将域处理从指明的分发器里移除。
+// domain.bind(callback) 返回的函数会是一个对于所提供的回调函数的包装函数。当这个被返回的函数被调用时，所有被抛出的错误都会被导向到这个域的error事件。
+
+
+
+
